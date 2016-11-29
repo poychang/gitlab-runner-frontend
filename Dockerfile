@@ -1,6 +1,6 @@
-FROM gitlab/gitlab-runner:v1.8.0
+FROM gitlab/gitlab-runner
 
-MAINTAINER Dave Steck
+MAINTAINER Poy Chang
 
 # install node, npm, bower, grunt, lftp and sass
 RUN apt-get update && \
