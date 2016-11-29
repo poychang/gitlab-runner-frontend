@@ -5,7 +5,7 @@ This is a custom build of the original gitlab-runner Docker image from https://g
 Toolchain:
 * [NodeJS](https://nodejs.org)
 * [NPM](https://www.npmjs.com/)
-* [Grunt](http://gruntjs.com/)
+* [Gulp](http://gulpjs.com/)
 * [Bower](http://bower.io/)
 * [Ruby](https://www.ruby-lang.org)
 * [SASS](http://sass-lang.com/)
@@ -19,7 +19,7 @@ publish:
   script:
     - npm install
     - bower install
-    - grunt
+    - gulp
     - cd build
     - lftp -u $FTP_USER,$FTP_PASS -e 'mirror --only-newer --reverse --verbose ./ ./' $FTP_HOST
   only:
@@ -28,7 +28,7 @@ publish:
     - sass
     - bower
     - npm
-    - grunt
+    - gulp
     - lftp
 ```
 
@@ -37,6 +37,7 @@ publish:
 > If you are defining tags like i did in my example, you need to set those tags on your runner via Gitlab-CI settings too. If not, your build status will stay pending!
 
 ### Add submodule support and fix lftp certificate validation error
+
 You need to perform the following actions as gitlab-runner user (`sudo su gitlab-runner`)
 - create ssh keys  for submodules which are linked via ssh urls
 - set .ssh folder permission to 700
@@ -46,5 +47,6 @@ You need to perform the following actions as gitlab-runner user (`sudo su gitlab
 - create ~/.lftprc file with `set ssl:verify-certificate false` if certificate validation fails
 
 ### Usefull links
+
 * [gitlab-runner config](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/configuration/advanced-configuration.md)
 * [.gitlab-ci.yml](http://doc.gitlab.com/ci/yaml/README.html)
