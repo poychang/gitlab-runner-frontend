@@ -3,7 +3,7 @@ FROM gitlab/gitlab-runner:v1.8.0
 MAINTAINER Dave Steck
 
 # install node, npm, bower, grunt, lftp and sass
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+RUN apt-get update && \
     apt-get install -y nodejs ruby lftp libfontconfig && \
     sudo su -c "gem install sass" && \
     npm update npm -g && \
