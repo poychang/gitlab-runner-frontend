@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-runner
+FROM gitlab/gitlab-runner:v1.8.0
 
 MAINTAINER Dave Steck
 
